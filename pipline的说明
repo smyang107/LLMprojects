@@ -1,0 +1,100 @@
+Hugging face平台的transformers.pipline聚合了预训练模型和对应的文本预处理（当task为question-answering）
+
+pipline的参数介绍
+1. task
+    类型：str
+    描述：指定要执行的任务类型。pipeline 支持多种任务类型，包括：
+    "text-classification"：文本分类
+    "sentiment-analysis"：情感分析（文本分类的一个子集）
+    "ner" 或 "token-classification"：命名实体识别
+    "question-answering"：问答
+    "fill-mask"：填空任务
+    "summarization"：文本摘要
+    "translation_xx_to_yy"：翻译（例如，从 en 翻译到 fr 使用 "translation_en_to_fr"）
+    "text-generation"：文本生成
+    "conversational"：对话生成
+    "feature-extraction"：特征提取
+    "zero-shot-classification"：零样本分类
+    "image-classification"：图像分类
+等等。
+2. model
+    类型：str 或 PreTrainedModel
+    描述：指定要使用的预训练模型的名称或路径。如果没有指定，pipeline 会根据任务类型自动选择一个默认模型。可以使用 Hugging Face 模型库中的模型名称（如 "bert-base-uncased" 或 "gpt2"）。
+3. tokenizer
+    类型：str 或 PreTrainedTokenizer
+    描述：指定要使用的分词器。与 model 参数类似，可以指定预训练模型的名称或路径。如果不指定，pipeline 将自动选择与模型匹配的默认分词器。
+4. framework
+    类型：str
+    描述：指定要使用的深度学习框架，可以是 "pt"（PyTorch）或 "tf"（TensorFlow）。如果不指定，pipeline 会自动检测当前环境中可用的框架。
+5. revision
+    类型：str
+    描述：指定要使用的模型版本或分支。可以是模型存储库中的分支名称、标签或特定的提交哈希值。
+6. use_fast
+    类型：bool
+    描述：是否使用“快速”分词器（如果可用）。快速分词器基于 Rust，通常比 Python 分词器更快且更高效。默认值为 True。
+7. device
+    类型：int
+    描述：指定设备的 ID，用于选择计算设备。-1 表示使用 CPU，非负整数（如 0）表示使用特定的 GPU（如果可用）。
+8. model_kwargs
+    类型：dict
+    描述：传递给模型的其他关键字参数，可以用来配置模型的特定设置或行为。
+9. tokenizer_kwargs
+    类型：dict
+    描述：传递给分词器的其他关键字参数，用于配置分词器的特定行为。
+10. pipeline_class
+    类型：Pipeline
+    描述：如果指定，强制使用给定的 Pipeline 类，而不是根据任务自动选择的类。这个选项适用于高级用户，他们想要完全控制使用的 Pipeline 类
+
+Hugging Face 的 `Transformers` 库可以用于许多自然语言处理（NLP）任务。以下是一些常见的任务及其用途：
+
+### 1. **文本分类 (Text Classification)**
+   - **用途**：对输入文本进行分类，如情感分析、垃圾邮件检测、话题分类等。
+   - **模型**：BERT、DistilBERT、RoBERTa、ALBERT 等。
+
+### 2. **命名实体识别 (Named Entity Recognition, NER)**
+   - **用途**：从文本中识别出实体，如人名、地名、组织名称等。
+   - **模型**：BERT、XLM-RoBERTa、Flair 等。
+
+### 3. **文本生成 (Text Generation)**
+   - **用途**：根据输入生成自然语言文本，如自动写作、对话生成、摘要生成等。
+   - **模型**：GPT-2、GPT-3、T5、BART 等。
+
+### 4. **问答 (Question Answering)**
+   - **用途**：根据给定的上下文文本回答问题。
+   - **模型**：BERT、DistilBERT、ALBERT、T5、ELECTRA 等。
+
+### 5. **文本摘要 (Summarization)**
+   - **用途**：对长文本进行总结，生成简短的摘要。
+   - **模型**：BART、T5、PEGASUS 等。
+
+### 6. **翻译 (Translation)**
+   - **用途**：将一种语言的文本翻译成另一种语言。
+   - **模型**：mBART、T5、MarianMT 等。
+
+### 7. **语义相似度计算 (Semantic Similarity)**
+   - **用途**：计算两个文本之间的相似度，用于信息检索、重复检测等。
+   - **模型**：Sentence-BERT、MiniLM 等。
+
+### 8. **文本纠错 (Text Correction)**
+   - **用途**：检测并纠正文本中的拼写和语法错误。
+   - **模型**：T5、BART 等。
+
+### 9. **填空 (Fill-Mask)**
+   - **用途**：在文本中预测和填充被掩蔽的单词。
+   - **模型**：BERT、RoBERTa、DistilBERT 等。
+
+### 10. **对话生成 (Conversational AI)**
+   - **用途**：生成与用户输入相关的对话回复。
+   - **模型**：DialoGPT、BlenderBot 等。
+
+### 11. **语言建模 (Language Modeling)**
+   - **用途**：预测文本中的下一个词或字符，用于生成新的句子或段落。
+   - **模型**：GPT-2、GPT-3、XLNet 等。
+
+### 12. **多任务学习 (Multi-Task Learning)**
+   - **用途**：同时执行多个任务，如文本分类和问答。
+   - **模型**：T5、mT5 等。
+
+
+
+。
